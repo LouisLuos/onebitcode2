@@ -1,3 +1,5 @@
+const mockUsers = require("../models/users")
+
 module.exports = { 
 
     dashboard: (req, res) => {
@@ -10,5 +12,11 @@ module.exports = {
         req.session.authenticated = false
         req.session.currentUser = null
         res.redirect('/')
+    },
+
+    users: (req, res) => {
+        res.render('users', {mockUsers})
     }
+
+    
 }

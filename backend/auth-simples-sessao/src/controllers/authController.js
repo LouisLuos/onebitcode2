@@ -1,10 +1,5 @@
-const mockUsers = [
-  { username: "douglas_dev", password: "hashed_password_123" },
-  { username: "ana_clara", password: "security_pass_456" },
-  { username: "marcos_viana", password: "hidden_key_789" },
-  { username: "julia_sales", password: "safe_entry_012" },
-  { username: "bruno_lima", password: "secret_access_345" }
-];
+const mockUsers = require("../models/users")
+
 
 module.exports = {
     // GET / 
@@ -21,10 +16,13 @@ module.exports = {
 
         const newUser = {
             username,
-            password
+            password,
+            role: "standard"
         }
-
+        
         mockUsers.push(newUser)
+        req.session.authenticated = true
+        req.session.currentUser = newUser
         res.status(201).redirect('/dashboard')
     },
 

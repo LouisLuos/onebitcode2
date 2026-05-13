@@ -6,4 +6,16 @@ const authMiddleare = (req, res, next) => {
     }
 }
 
-module.exports = authMiddleare
+const isAdmin = (req, res, next) => {
+    if(req.session.currentUser.role === "admin"){
+        next()
+    } else { 
+        res.redirect('/dashboard')
+    }
+}
+
+
+module.exports = {
+    authMiddleare,
+    isAdmin
+}
