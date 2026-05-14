@@ -6,12 +6,12 @@ module.exports = {
     index: (req, res) => {
         res.render('index')
     },
-
+    // POST /auth/login
     register: (req, res) => {
         const { username, password } = req.body
         const allUsers = mockUsers.find(user => user.username === username)
         if(allUsers) {
-            return res.status(400).rendirect
+            return res.status(400).redirect('/')
         }
 
         const newUser = {

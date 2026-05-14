@@ -5,7 +5,7 @@ const {authMiddleare, isAdmin} = require("./middlewares/authMiddleware")
 const router = express.Router()
 
 router.get('/', authController.index)
-router.get('/dashboard/users', authMiddleare, isAdmin,  dashboardController.users)
+router.get('/dashboard/users', authMiddleare, isAdmin, dashboardController.users)
 router.post('/auth/register', authController.register)
 router.post('/auth/login', authController.login)
 router.get('/dashboard', authMiddleare, dashboardController.dashboard)
