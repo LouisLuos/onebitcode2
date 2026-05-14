@@ -18,14 +18,16 @@ const authMiddleare = (req, res, next) => {
       const user = users.find(user => user.username === decodedToken.username)
       if(user){
         req.authorUser = user
-        return res.status(200).json({ message: `Seja bem vindo ${user.username}`})
+        next()
       } else {
         return res.status(401).json({ message: "usuário inválido"})
       }
-      next()
+      
     } catch (error) {
         return res.status(401).json({ message: "token inválido"})
     }
+
+    
 }
 
 module.exports = authMiddleare

@@ -4,7 +4,8 @@ const authMiddleare = require('../middleware/auth-middleware')
 const protectedRouter = express.Router()
 
 protectedRouter.get('/dashboard', authMiddleare, (req, res) => {
-    res.json({ message: "vc esta protegido"})
+    const user = req.authorUser
+    res.json({ message: `Bem vindo, ${user.username} você está protegido!`})
 })
 
 
